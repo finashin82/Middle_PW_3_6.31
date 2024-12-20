@@ -47,6 +47,6 @@ public class TowerRotation : MonoBehaviour
         //currentRotation.z = Mathf.Clamp(currentRotation.z, minAngle, maxAngle);
 
         // обновляем поворот дочернего объекта через
-        //childObject.localEulerAngles = currentRotation;
+        //childObject.localEulerAngles = currentRotation;        
     }
 }
