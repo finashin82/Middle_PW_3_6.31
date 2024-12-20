@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 1936470862073323060}
   - component: {fileID: 2704205464760984618}
   - component: {fileID: 705086370623135906}
-  - component: {fileID: 2290791940775996933}
   - component: {fileID: 4792838998500396654}
   - component: {fileID: 4105370481077375599}
+  - component: {fileID: -5874796686798892921}
+  - component: {fileID: 607463704783702837}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,20 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2290791940775996933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7048100449514110871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 728c79b0019bc0349bac5fa2e879158a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeDestroy: 3
-  speed: 3
 --- !u!135 &4792838998500396654
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -151,3 +138,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &-5874796686798892921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048100449514110871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a8b0008fd6a264baebea8f003f57be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+--- !u!114 &607463704783702837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048100449514110871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728c79b0019bc0349bac5fa2e879158a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -43,9 +43,7 @@ public class FireBullet : MonoBehaviour
     /// Выстрел в направлении луча
     /// </summary>
     void Shoot()
-    {      
-        Debug.Log(hit.transform.name);        
-
+    {   
         // Создаем экземпляр и разворачиваем его в направлении луча
         var fire = Instantiate(bullet, transform.position, Quaternion.LookRotation(hit.normal));
 
