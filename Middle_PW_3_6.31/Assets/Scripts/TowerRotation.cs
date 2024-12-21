@@ -1,28 +1,21 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.Windows;
 
-public class TowerRotation : MonoBehaviour
+public class TowerRotation : InputData
 {
     [SerializeField] private float rotationSpeed = 20f;
 
     private void FixedUpdate()
     {
-        RotationTowerButton();
+        RotationTowerButton();        
     }
 
     private void RotationTowerButton()
     {
-        // Поворот башни вправо
-        if (Input.GetKey(KeyCode.X))
-        {
-            transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
-        }
-
-        // Поворот башни влево
-        if (Input.GetKey(KeyCode.Z))
-        {
-            transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime));            
-        }
+        if (inputVector.x != 0)
+            transform.Rotate(new Vector3(0, 0, inputVector.x * rotationSpeed * Time.deltaTime));
     }
 }

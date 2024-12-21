@@ -40,7 +40,7 @@ public class BeginAttackEnemy : MonoBehaviour
             currentTime = timeToAttack;
         }
 
-        if (isAttack && currentEnemy < 10)
+        if (isAttack && currentEnemy < countEnemy)
         {
             randPoint = Random.Range(0, startPoint.Length);
 

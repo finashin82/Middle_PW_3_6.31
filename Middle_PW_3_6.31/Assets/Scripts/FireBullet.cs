@@ -3,7 +3,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.Rendering;
 
-public class FireBullet : MonoBehaviour
+public class FireBullet : InputData
 {
     [SerializeField] private GameObject bullet;
 
@@ -13,15 +13,40 @@ public class FireBullet : MonoBehaviour
 
     [SerializeField] private float speedBullet = 20f;
 
-    private RaycastHit hit;    
+    private RaycastHit hit;
+
+    private float currentTime;
+
+    private float timeToAttack = 0.2f;
+
+    private bool isTime;
+
+    void Start()
+    {
+        currentTime = timeToAttack;
+    }
+
 
     void Update()
     {
         RaycastRender();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (currentTime > 0f && !isTime)
+        {
+            currentTime -= Time.deltaTime;
+        }
+        else
+        {
+            isTime = true;
+
+            currentTime = timeToAttack;
+        }
+
+        if (isAttack && isTime)
         {
             Shoot();
+
+            isTime = false;
         }
     }
 
@@ -43,11 +68,13 @@ public class FireBullet : MonoBehaviour
     /// ¬ыстрел в направлении луча
     /// </summary>
     void Shoot()
-    {   
-        // —оздаем экземпл€р и разворачиваем его в направлении луча
-        var fire = Instantiate(bullet, transform.position, Quaternion.LookRotation(hit.normal));
+    {   if (hit.normal != Vector3.zero)
+        {
+            // —оздаем экземпл€р и разворачиваем его в направлении луча
+            var fire = Instantiate(bullet, transform.position, Quaternion.LookRotation(hit.normal));
 
-        // ƒвигаем вперед использу€ локальные координаты
-        fire.GetComponent<Rigidbody>().linearVelocity += transform.forward * speedBullet;
+            // ƒвигаем вперед использу€ локальные координаты
+            fire.GetComponent<Rigidbody>().linearVelocity += transform.forward * speedBullet;
+        }
     }
 }
