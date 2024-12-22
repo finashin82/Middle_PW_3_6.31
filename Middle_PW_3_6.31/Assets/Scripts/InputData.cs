@@ -3,33 +3,35 @@ using UnityEngine.InputSystem;
 
 public class InputData : MonoBehaviour
 {
+    public InputSystem_Actions inputActions;
+
     public Vector2 inputVector;
 
     public bool isAttack;
 
-    public void OnEnable()
+    private void Awake()
     {
-        // Активируем наш созданный ранее контроллер ввода
-        InputSystem_Actions inputActions = new InputSystem_Actions();
+        // Активируем контроллер ввода
+        inputActions = new InputSystem_Actions();
 
-        inputActions.Enable();
-
-        // Подписываемся на событие нажатия клавиш движения 
-        inputActions.Player.Move.started += move => OnClickStarted(move);
-        inputActions.Player.Move.performed += move => OnClickPerformed(move);
-        inputActions.Player.Move.canceled += move => OnClickCanceled(move);
+        // Подписываемся на событие нажатия клавиш движения
+        inputActions.Player.Move.started += OnClickStarted;
+        inputActions.Player.Move.performed += OnClickPerformed;
+        inputActions.Player.Move.canceled += OnClickCanceled;
 
         // Подписываемся на событие нажатия клавиш атаки
-        inputActions.Player.Attack.started += attack => OnPressStarted(attack);
-        inputActions.Player.Attack.performed += attack => OnPressPerformed(attack);
-        inputActions.Player.Attack.canceled += attack => OnPressCanceled(attack);
+        inputActions.Player.Attack.started += OnPressStarted;
+        inputActions.Player.Attack.performed += OnPressPerformed;
+        inputActions.Player.Attack.canceled += OnPressCanceled;
+    }
+
+    public void OnEnable()
+    {
+        inputActions.Enable();
     }
 
     public void OnDisable()
     {
-        // Отключаем контроллер ввода при деактивации компонента
-        InputSystem_Actions inputActions = new InputSystem_Actions();
-
         inputActions.Disable();
     }    
 
